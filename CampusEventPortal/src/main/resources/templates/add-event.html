@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Add Event</title>
+
+<style>
+
+body{
+font-family:Poppins;
+background:black;
+color:white;
+padding:40px;
+}
+
+h1{
+text-align:center;
+margin-bottom:20px;
+}
+
+form{
+max-width:500px;
+margin:auto;
+display:flex;
+flex-direction:column;
+gap:15px;
+background:#1e293b;
+padding:30px;
+border-radius:15px;
+box-shadow:0 0 20px rgba(142,45,226,0.5);
+}
+
+input,textarea{
+padding:10px;
+border-radius:6px;
+border:none;
+}
+
+button{
+padding:12px;
+background:linear-gradient(45deg,#8e2de2,#ff6ec4);
+color:white;
+border:none;
+cursor:pointer;
+border-radius:8px;
+}
+
+button:hover{
+transform:scale(1.05);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Add New Event</h1>
+
+<!-- ✅ IMPORTANT: th:object added -->
+<form th:action="@{/admin/save-event}" method="post" th:object="${event}">
+
+<input type="text" th:field="*{eventName}" placeholder="Event Name" required>
+
+<input type="text" th:field="*{category}" placeholder="Category" required>
+
+<input type="date" th:field="*{eventDate}" required>
+
+<input type="text" th:field="*{location}" placeholder="Location" required>
+
+<textarea th:field="*{description}" placeholder="Description" required></textarea>
+
+<button type="submit">Create Event</button>
+
+</form>
+
+</body>
+</html>

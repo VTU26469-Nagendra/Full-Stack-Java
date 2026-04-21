@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Event</title>
+</head>
+<body>
+
+<h2>Add New Event</h2>
+
+<form action="/register" method="post">
+
+<input type="hidden" name="eventName">
+
+<input type="number" name="vtuNo" placeholder="VTU No" required>
+
+<input type="text" name="name" placeholder="Name" required>
+
+<input type="text" name="registerNumber" placeholder="Register Number" required>
+
+<input type="text" name="department" placeholder="Department" required>
+
+<input type="number" name="year" placeholder="Year" required>
+
+<input type="text" name="phone" placeholder="Phone" required>
+
+<input type="email" name="vtuEmail" placeholder="VTU Email" required>
+
+<button type="submit">Register</button>
+
+</form>
+
+</body>
+</html>

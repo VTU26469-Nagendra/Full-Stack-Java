@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Manage Events</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#111;
+color:white;
+padding:40px;
+}
+
+h1{
+margin-bottom:20px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+background:white;
+color:black;
+}
+
+th,td{
+padding:12px;
+border:1px solid #ddd;
+text-align:center;
+}
+
+th{
+background:#6a11cb;
+color:white;
+}
+
+button{
+padding:6px 12px;
+border:none;
+background:red;
+color:white;
+cursor:pointer;
+}
+
+.add-btn{
+background:green;
+margin-bottom:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Manage Events</h1>
+
+<a href="/admin/events/add">
+<button class="add-btn">Add Event</button>
+</a>
+
+<table>
+
+<tr>
+
+<th>ID</th>
+<th>Name</th>
+<th>Category</th>
+<th>Date</th>
+<th>Location</th>
+<th>Action</th>
+
+</tr>
+
+<tr th:each="event : ${events}">
+
+<td th:text="${event.id}"></td>
+<td th:text="${event.eventName}"></td>
+<td th:text="${event.category}"></td>
+<td th:text="${event.eventDate}"></td>
+<td th:text="${event.location}"></td>
+
+<td>
+
+<a th:href="@{'/admin/events/delete/' + ${event.id}}">
+<button>Delete</button>
+</a>
+
+</td>
+
+</tr>
+
+</table>
+
+</body>
+
+</html>
