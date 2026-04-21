@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title>Technical Events</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+min-height:100vh;
+background:linear-gradient(135deg,#020617,#0f172a);
+color:white;
+padding:30px;
+}
+
+h1{
+margin-bottom:30px;
+}
+
+.container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:20px;
+}
+
+.card{
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(15px);
+padding:25px;
+border-radius:18px;
+transition:0.4s;
+box-shadow:0 0 20px rgba(142,45,226,0.2);
+}
+
+.card:hover{
+transform:translateY(-8px) scale(1.03);
+}
+
+button{
+padding:10px 18px;
+border:none;
+border-radius:8px;
+background:linear-gradient(45deg,#8e2de2,#ff6ec4);
+color:white;
+cursor:pointer;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>Technical Events</h1>
+
+<div class="container">
+
+<div class="card">
+<h2>💻 Hackathon</h2>
+<p>24 hour coding challenge</p>
+<a th:href="@{/register/hackathon}">
+<button>Register</button>
+</a>
+</div>
+
+<div class="card">
+<h2>👨‍💻 Coding Contest</h2>
+<p>Competitive programming competition</p>
+<a th:href="@{/register/coding}">
+<button>Register</button>
+</a>
+</div>
+
+<div class="card">
+<h2>🤖 AI Workshop</h2>
+<p>Learn Machine Learning & AI</p>
+<a th:href="@{/register/ai}">
+<button>Register</button>
+</a>
+</div>
+
+<div class="card">
+<h2>🎮 Gaming Tournament</h2>
+<p>Free Fire</p>
+<a th:href="@{/register/gaming}">
+<button>Register</button>
+</a>
+
+<p>BGMI Battle</p>
+<a th:href="@{/register/bgmi}">
+<button>Register</button>
+</a>
+</div>
+
+</div>
+
+</body>
+</html>

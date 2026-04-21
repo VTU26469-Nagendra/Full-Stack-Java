@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Admin Dashboard</title>
+
+<style>
+
+body{
+background: radial-gradient(circle at top,#1a0b2e,#000000);
+color:white;
+font-family:Poppins;
+padding:30px;
+}
+
+/* Title */
+h1{
+margin-bottom:20px;
+}
+
+/* Buttons */
+.top-buttons{
+margin-bottom:20px;
+}
+
+.top-buttons button{
+background:linear-gradient(45deg,#8e2de2,#ff6ec4);
+border:none;
+padding:10px 20px;
+color:white;
+border-radius:10px;
+cursor:pointer;
+margin-right:10px;
+}
+
+.top-buttons button:hover{
+transform:scale(1.05);
+}
+
+/* Table Container */
+.table-box{
+background:rgba(255,255,255,0.05);
+padding:20px;
+border-radius:15px;
+box-shadow:0 0 20px rgba(142,45,226,0.5);
+}
+
+/* Table */
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+/* Header */
+th{
+background:linear-gradient(90deg,#8e2de2,#4a00e0);
+padding:15px;
+}
+
+/* Rows */
+td{
+padding:15px;
+background:rgba(255,255,255,0.9);
+color:black;
+}
+
+/* Alternate */
+tr:nth-child(even) td{
+background:#e5e7eb;
+}
+
+/* Delete Button */
+.delete-btn{
+background:linear-gradient(45deg,#ff416c,#ff4b2b);
+border:none;
+padding:8px 16px;
+color:white;
+border-radius:8px;
+cursor:pointer;
+}
+
+.delete-btn:hover{
+transform:scale(1.05);
+}
+
+/* No Data */
+.no-data{
+text-align:center;
+padding:20px;
+color:#ccc;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Admin Dashboard</h1>
+
+<!-- ✅ TOP BUTTONS -->
+<div class="top-buttons">
+
+    <a href="/admin/add-event">
+        <button>Add Event</button>
+    </a>
+
+    <a href="/admin/events">
+        <button>View Events</button>
+    </a>
+
+</div>
+
+<div class="table-box">
+
+<table>
+
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>VTU No</th>
+<th>Department</th>
+<th>Event</th>
+<th>Action</th>
+</tr>
+
+<!-- ✅ IF DATA EXISTS -->
+<tr th:if="${#lists.isEmpty(registrations)}">
+<td colspan="6" class="no-data">No registrations found</td>
+</tr>
+
+<!-- ✅ STUDENT DATA -->
+<tr th:each="reg : ${registrations}">
+<td th:text="${reg.id}"></td>
+<td th:text="${reg.name}"></td>
+<td th:text="${reg.vtuNo}"></td>
+<td th:text="${reg.department}"></td>
+<td th:text="${reg.eventName}"></td>
+
+<td>
+<a th:href="@{/admin/delete/{id}(id=${reg.id})}"
+   onclick="return confirm('Are you sure you want to delete?')">
+    <button class="delete-btn">Delete</button>
+</a>
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+</body>
+</html>
